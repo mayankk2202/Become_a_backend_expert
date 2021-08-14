@@ -21,14 +21,6 @@
 		<url-pattern>/report</url-pattern>
 	</servlet-mapping>
 	<servlet>
-		<servlet-name>update</servlet-name>
-		<servlet-class>com.LA.update</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>update</servlet-name>
-		<url-pattern>/update</url-pattern>
-	</servlet-mapping>
-	<servlet>
 		<servlet-name>listmapping</servlet-name>
 		<servlet-class>com.LA.ListMaping</servlet-class>
 	</servlet>
