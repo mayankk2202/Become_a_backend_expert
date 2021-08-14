@@ -16,10 +16,15 @@ public class logout extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession se = request.getSession(false);
-		se.invalidate();
 		PrintWriter out = response.getWriter();
-		out.println("<html><body><center><span style='color:green'><h2>You are Successfully Logged Out!!!</h2></span><center>");
-		out.println("<br><br><br><h4>click <a href = \"Login.html\">here</a> to login again.</body></html>");
+		if(se != null) {
+			se.invalidate();
+			out.println("<html><body><center><span style='color:green'><h2>You are Successfully Logged Out!!!</h2></span><center>");
+			out.println("<br><br><br><h4>click <a href = \"Login.html\">here</a> to login again.</body></html>");
+		}else {
+			out.println("<html><body><center><span style='color:red'><h2>Invalid session!!!</h2></Span><center>");
+			out.println("<br><br><br><h4>click <a href = \"Login.html\">here</a> to login again.</body></html>");
+		}
 	}
 
 }
