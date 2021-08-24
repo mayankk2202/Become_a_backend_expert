@@ -71,6 +71,20 @@ public class readrecord extends HttpServlet {
 					out.println("</tr><tr><td>Teacher Code:</td><td><input type=\"text\" name=\"name\"></td>");
 					out.println("</tr><tr><td>Subject Code:</td><td><input type=\"text\" name=\"desc\"></td>");
 					break;}
+				case ("St2CMap"):{
+						out.println("<div class=\"center\"><h3>Please enter Values for the Teacher to Subject mapping:</h3>");
+						out.println("<form method=\"post\" action=\"addrecord2db\"><table><tr><td>");
+						out.println("Student to Class Mapping Code:</td><td><input type=\"text\" name=\"code\"></td>");
+						out.println("</tr><tr><td>Roll Number:</td><td><input type=\"text\" name=\"name\"></td>");
+						out.println("</tr><tr><td>Class Code:</td><td><input type=\"text\" name=\"desc\"></td>");
+						break;}
+				case ("St2SuMap"):{
+					out.println("<div class=\"center\"><h3>Please enter Values for the Teacher to Subject mapping:</h3>");
+					out.println("<form method=\"post\" action=\"addrecord2db\"><table><tr><td>");
+					out.println("Student to Subject Mapping Code:</td><td><input type=\"text\" name=\"code\"></td>");
+					out.println("</tr><tr><td>Roll Number:</td><td><input type=\"text\" name=\"name\"></td>");
+					out.println("</tr><tr><td>Subject Code:</td><td><input type=\"text\" name=\"desc\"></td>");
+					break;}
 			}
 			out.println("</tr><tr align=\"right\"><td></td><td><input type=\"submit\" value=\"Submit\"></td></tr>");
 			out.println("</table></form></div></body></html>");

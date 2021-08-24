@@ -22,14 +22,14 @@ public class addrecord2db extends HttpServlet {
 		System.out.println("Servlet implementation class addrecord2db");
 		PrintWriter out = response.getWriter();
 		HttpSession se = request.getSession(false);
-		System.out.println("Values recorded: code=" + request.getParameter("code") + ", name= " + request.getParameter("name") + ", Description= " + request.getParameter("desc"));
+		System.out.println("Values recorded: code=" + request.getParameter("code") + ", Col2= " + request.getParameter("name") + ", col3= " + request.getParameter("desc"));
 		
 		if(se != null) {
 			String master = (String) se.getAttribute("master");
 			
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver"); 
-				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","passworddb");
+				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","mayank","password");
 				PreparedStatement pstmt = con.prepareStatement("insert into "+master+" Values (?,?,?)");
 				pstmt.setString(1,request.getParameter("code"));
 				pstmt.setString(2,request.getParameter("name"));
