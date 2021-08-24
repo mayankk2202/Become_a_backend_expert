@@ -20,12 +20,4 @@
 		<servlet-name>report</servlet-name>
 		<url-pattern>/report</url-pattern>
 	</servlet-mapping>
-	<servlet>
-		<servlet-name>listmapping</servlet-name>
-		<servlet-class>com.LA.ListMaping</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>listmapping</servlet-name>
-		<url-pattern>/ListMaping</url-pattern>
-	</servlet-mapping>
 </web-app>

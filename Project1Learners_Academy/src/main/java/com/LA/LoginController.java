@@ -22,7 +22,7 @@ public class LoginController extends HttpServlet {
 		se.setMaxInactiveInterval(60);
 		
 		if (ID.equalsIgnoreCase("Admin") && Pwd.equals("P@ssw0rd")) 
-			response.sendRedirect("Home.html"); 
+			response.sendRedirect("home"); 
 		else {
 			PrintWriter out = response.getWriter();
 			RequestDispatcher rd = request.getRequestDispatcher("Login.html");

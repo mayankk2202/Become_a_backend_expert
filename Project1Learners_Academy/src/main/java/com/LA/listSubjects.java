@@ -32,7 +32,7 @@ public class listSubjects extends HttpServlet {
 				ResultSet rs = stmt.executeQuery("select * from subject");
 				out.println("<!DOCTYPE html><html><head><meta charset=\"ISO-8859-1\"><title>Update Record</title>"
 						+ "<style>table, th, td {border: 1px solid black;border-collapse: collapse;}</style></head><body>");
-				out.println("<div align=\"center\"><h3>The Class Master Table is as follows:</h3>");
+				out.println("<div align=\"center\"><h3>The Subject Master Table is as follows:</h3>");
 				out.println("<table>"
 						+ "<tr><b><th>SUB_CODE</th><th>SUBJECT</th><th>SUBJECT_DES</th></b></tr>");
 				while(rs.next()) {

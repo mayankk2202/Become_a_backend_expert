@@ -32,7 +32,7 @@ public class listTeacher extends HttpServlet {
 				ResultSet rs = stmt.executeQuery("select * from teacher");
 				out.println("<!DOCTYPE html><html><head><meta charset=\"ISO-8859-1\"><title>Update Record</title>"
 						+ "<style>table, th, td {border: 1px solid black;border-collapse: collapse;}</style></head><body>");
-				out.println("<div align=\"center\"><h3>The Class Master Table is as follows:</h3>");
+				out.println("<div align=\"center\"><h3>The Teacher Master Table is as follows:</h3>");
 				out.println("<table>"
 						+ "<tr><b><th>TEACHER_ID</th><th>FIRST_NAME</th><th>LAST_NAME</th></b></tr>");
 				while(rs.next()) {

@@ -40,7 +40,9 @@ public class addrecord2db extends HttpServlet {
 			  } catch (SQLException | ClassNotFoundException e) {
 				  e.printStackTrace(); 
 				  }	
-			  response.sendRedirect("UpdateList.html");
+			if	(master=="class"|master=="student"|master=="teacher"|master=="subject")
+				response.sendRedirect("UpdateList.html");
+			else response.sendRedirect("mapping.html");
 			 
 		}else {
 			out.println("<html><body><center><span style='color:red'><h2>Invalid session!!!</h2><span><center>");
