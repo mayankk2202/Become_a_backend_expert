@@ -33,9 +33,13 @@ public class updateRecordInDB extends HttpServlet {
 			String[] studentcol={"ROLL_NUMBER","FIRST_NAME","LAST_NAME"};
 			String[] teachercol={"TEACHER_ID","FIRST_NAME","LAST_NAME"};
 			String[] subjectcol={"SUB_CODE","SUBJECT","SUBJECT_DES"};
+			String[] Su2CMapcol={"SU2C_CODE","SUBJECT_CODE","CLASS_CODE"};
+			String[] T2SMapcol={"T2SU_CODE","TEACHER_CODE","SUBJECT_CODE"};
+			String[] St2CMapcol={"ST2CMAP_CODE","ROLL_NUMBER","CLASS_CODE"};
+			String[] St2SuMapcol={"ST2SUMAP_CODE","ROLL_NUMBER","SUBJECT_CODE"};
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver"); 
-				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","passworddb");
+				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","mayank","password");
 				Statement stmt = con.createStatement();
 				switch (master) {
 				case ("class"):{
@@ -57,6 +61,26 @@ public class updateRecordInDB extends HttpServlet {
 					stmt.executeUpdate("update "+master+ " set "+subjectcol[0]+"='"+request.getParameter("ncode")+"', "+subjectcol[1]
 							+"='"+request.getParameter("name")+"', "+subjectcol[2]+"='"+request.getParameter("desc")
 							+"' where "+subjectcol[0]+"='" + request.getParameter("code")+"'");
+					break;}
+				case ("Su2CMap"):{
+					stmt.executeUpdate("update "+master+ " set "+Su2CMapcol[0]+"='"+request.getParameter("ncode")+"', "+Su2CMapcol[1]
+						+"='"+request.getParameter("name")+"', "+Su2CMapcol[2]+"='"+request.getParameter("desc")
+						+"' where "+Su2CMapcol[0]+"='" + request.getParameter("code")+"'");
+					break;}
+				case ("T2SMap"):{
+					stmt.executeUpdate("update "+master+ " set "+T2SMapcol[0]+"='"+request.getParameter("ncode")+"', "+T2SMapcol[1]
+						+"='"+request.getParameter("name")+"', "+T2SMapcol[2]+"='"+request.getParameter("desc")
+						+"' where "+T2SMapcol[0]+"='" + request.getParameter("code")+"'");
+					break;}
+				case ("St2CMap"):{
+					stmt.executeUpdate("update "+master+ " set "+St2CMapcol[0]+"='"+request.getParameter("ncode")+"', "+St2CMapcol[1]
+							+"='"+request.getParameter("name")+"', "+St2CMapcol[2]+"='"+request.getParameter("desc")
+							+"' where "+St2CMapcol[0]+"='" + request.getParameter("code")+"'");
+					break;}
+				case ("St2SuMap"):{
+					stmt.executeUpdate("update "+master+ " set "+St2SuMapcol[0]+"='"+request.getParameter("ncode")+"', "+St2SuMapcol[1]
+							+"='"+request.getParameter("name")+"', "+St2SuMapcol[2]+"='"+request.getParameter("desc")
+							+"' where "+St2SuMapcol[0]+"='" + request.getParameter("code")+"'");
 					break;}}
 				con.close();
 				System.out.println("Value updated Successfully in DB.");

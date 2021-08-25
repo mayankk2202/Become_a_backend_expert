@@ -58,6 +58,38 @@ public class updateRecord extends HttpServlet {
 				out.println("</tr><tr><td>Subject Description:</td><td><input type=\"text\" name=\"desc\"></td>");
 				break;
 				}
+			case ("Su2CMap"):{
+				out.println("<table><tr><td>Subject to Class Mapping Code:</td><td><input type=\"text\" name=\"code\"></td></tr></table>");
+				out.println("<h3>Please enter New Values for Mapping:</h3>");
+				out.println("<table><tr><td>Subject to Class Mapping Code:</td><td><input type=\"text\" name=\"code\"></td>");
+				out.println("</tr><tr><td>Subject Code:</td><td><input type=\"text\" name=\"name\"></td>");
+				out.println("</tr><tr><td>Class Code:</td><td><input type=\"text\" name=\"desc\"></td>");
+				break;
+				}
+			case ("T2SMap"):{
+				out.println("<table><tr><td>Teacher to Subject Mapping Code:</td><td><input type=\"text\" name=\"code\"></td></tr></table>");
+				out.println("<h3>Please enter New Values for Mapping:</h3>");
+				out.println("<table><tr><td>Teacher to Subject Mapping Code:</td><td><input type=\"text\" name=\"code\"></td>");
+				out.println("</tr><tr><td>Teacher ID:</td><td><input type=\"text\" name=\"name\"></td>");
+				out.println("</tr><tr><td>Subject Code:</td><td><input type=\"text\" name=\"desc\"></td>");
+				break;
+				}
+			case ("St2CMap"):{
+				out.println("<table><tr><td>Student to Class Mapping Code:</td><td><input type=\"text\" name=\"code\"></td></tr></table>");
+				out.println("<h3>Please enter New Values for Mapping:</h3>");
+				out.println("<table><tr><td>Student to Class Mapping Code:</td><td><input type=\"text\" name=\"code\"></td>");
+				out.println("</tr><tr><td>Roll Number:</td><td><input type=\"text\" name=\"name\"></td>");
+				out.println("</tr><tr><td>Class Code:</td><td><input type=\"text\" name=\"desc\"></td>");
+				break;
+				}
+			case ("St2SuMap"):{
+				out.println("<table><tr><td>Student to Subject Mapping Code:</td><td><input type=\"text\" name=\"code\"></td></tr></table>");
+				out.println("<h3>Please enter New Values for Mapping:</h3>");
+				out.println("<table><tr><td>Student to Subject Mapping Code:</td><td><input type=\"text\" name=\"code\"></td>");
+				out.println("</tr><tr><td>Roll Number:</td><td><input type=\"text\" name=\"name\"></td>");
+				out.println("</tr><tr><td>Subject Code:</td><td><input type=\"text\" name=\"desc\"></td>");
+				break;
+				}
 			}
 			out.println("</tr><tr align=\"right\"><td></td><td><input type=\"submit\" value=\"Submit\"></td></tr>");
 			out.println("</table></form></div></body></html>");

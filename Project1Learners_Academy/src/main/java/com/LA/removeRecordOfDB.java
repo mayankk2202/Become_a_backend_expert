@@ -32,18 +32,24 @@ public class removeRecordOfDB extends HttpServlet {
 			case ("student"):{ col="ROLL_NUMBER"; break;}
 			case ("teacher"):{ col="TEACHER_ID"; break;}
 			case ("subject"):{ col="SUB_CODE"; break;}
+			case ("Su2CMap"):{ col="SU2C_CODE"; break;}
+			case ("T2SMap"):{ col="T2SU_CODE"; break;}
+			case ("St2CMap"):{ col="ST2CMAP_CODE"; break;}
+			case ("St2SuMap"):{ col="ST2SUMAP_CODE"; break;}
 			}
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver"); 
-				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","passworddb");
+				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","mayank","password");
 				Statement stmt = con.createStatement();
 				stmt.executeUpdate("DELETE FROM "+master+" Where "+col+" = " + (String) request.getParameter("code"));
 				con.close();
-				System.out.println("Value Removed Successfully in DB.");
+				System.out.println("Value Removed Successfully from DB.");
 			  } catch (SQLException | ClassNotFoundException e) {
 				  e.printStackTrace(); 
 				  }	
-			  response.sendRedirect("UpdateList.html");
+			if	(master=="class"|master=="student"|master=="teacher"|master=="subject")
+				response.sendRedirect("UpdateList.html");
+			else response.sendRedirect("mapping.html");
 			 
 		}else {
 			out.println("<html><body><center><span style='color:red'><h2>Invalid session!!!</h2><span><center>");
