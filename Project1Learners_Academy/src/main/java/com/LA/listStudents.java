@@ -27,7 +27,7 @@ public class listStudents extends HttpServlet {
 		if(se != null) {
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
-				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","passworddb");
+				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","mayank","password");
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery("select * from student order by ROLL_NUMBER");
 				out.println("<!DOCTYPE html><html><head><meta charset=\"ISO-8859-1\"><title>Update Record</title>"

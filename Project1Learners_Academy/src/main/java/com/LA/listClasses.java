@@ -27,7 +27,7 @@ public class listClasses extends HttpServlet {
 		if(se != null) {
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
-				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","passworddb");
+				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","mayank","password");
 				Statement stmt = con.createStatement();
 				ResultSet rs = stmt.executeQuery("select * from class order by CLASS_NAME");
 				out.println("<!DOCTYPE html><html><head><meta charset=\"ISO-8859-1\"><title>Update Record</title>"
