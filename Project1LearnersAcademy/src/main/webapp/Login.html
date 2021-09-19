@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Login Page</title>
+		<style>
+			.center {
+    margin: auto;
+    width: 20%;
+    height: 51px;
+    padding: 197px;
+          }
+		</style>
+	</head>
+	<body>
+		<div class="center">
+			<form method="POST" action="LoginController">
+  				<table style="border: 2px solid black;">
+  				<tr>
+  					<td>Enter Your Login credentials:</td>
+  				</tr><tr>
+  					<td>Login ID:
+  					<input type="text" name="username" maxlength=100></td>
+  				</tr><tr>
+  					<td>Password:
+  					<input type="password" name="password" maxlength=100></td>
+  				</tr><tr align="right">
+						<td><input type="submit" value="login"></td>
+				</tr>
+  				</table>
+			</form>
+		</div>
+	</body>
+</html>
+
