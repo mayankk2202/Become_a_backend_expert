@@ -28,8 +28,6 @@ public class LoginController extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("Login.html");
 			rd.include(request, response);
 			out.print("<center><span style='color:red'>Invalid User Name OR Password!!!</span></center>");
-		}
-		
+		}		
 	}
-
 }

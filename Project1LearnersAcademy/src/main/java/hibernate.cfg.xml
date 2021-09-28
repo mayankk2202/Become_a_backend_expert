@@ -13,8 +13,10 @@
       <property name="show_sql">true</property>
       <property name="hbm2ddl.auto">update</property>
       
-      <mapping resource="com/DAO/class.hbm.xml" />
-      <mapping class="com.DAO.student"/>
+      <mapping class="com.dto.LAClass"/>
+      <mapping class="com.dto.LAStudent"/>
+      <mapping class="com.dto.LASubject"/>
+      <mapping class="com.dto.LATeacher"/>
             
     </session-factory>
 </hibernate-configuration>

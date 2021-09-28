@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Learner's Academy</title>
+	<style>table, th, td 
+	{
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+	</style>
+</head>
+<body>
+	<div align="center">
+		<h3>Select the action for the corresponding list:</h3>
+			<table>
+			<tr>
+				<td>Classes:</td>
+				<td><form method="post" action="AddClass"><button type="submit">add</button></form></td>
+				<td><form method="post" action="RemoveClass"><button type="submit">Remove</button></form></td>
+				<td><form method="post" action="ModifyClass"><button type="submit">Modify</button></form></td>
+				<td><form method="post" action="ListClasses"><button type="submit">List</button></form></td>
+			</tr><tr>
+				<td>Students:</td>
+				<td><form method="post" action="AddStudent"><button type="submit">add</button></form></td>
+				<td><form method="post" action="RemoveStudent"><button type="submit">Remove</button></form></td>
+				<td><form method="post" action="ModifyStudent"><button type="submit">Modify</button></form></td>
+				<td><form method="post" action="ListStudents"><button type="submit">List</button></form></td>
+			</tr><tr>
+				<td>Subjects:</td>
+				<td><form method="post" action="AddSubject"><button type="submit">add</button></form></td>
+				<td><form method="post" action="RemoveSubject"><button type="submit">Remove</button></form></td>
+				<td><form method="post" action="ModifySubject"><button type="submit">Modify</button></form></td>
+				<td><form method="post" action="ListSubjects"><button type="submit">List</button></form></td>
+			</tr><tr>
+				<td>Teachers:</td>
+				<td><form method="post" action="AddTeacher"><button type="submit">add</button></form></td>
+				<td><form method="post" action="RemoveTeacher"><button type="submit">Remove</button></form></td>
+				<td><form method="post" action="ModifyTeacher"><button type="submit">Modify</button></form></td>
+				<td><form method="post" action="ListTeacher"><button type="submit">List</button></form></td>
+			</tr>
+		</table>
+	</div>
+		<h5 align="center"><form method="post" action="home"><button type="submit">Home</button></form></h5>
+</body>
+</html>
