@@ -2,7 +2,8 @@ package com.DAO;
 
 import java.util.List;
 
-import org.hibernate.Query;
+import javax.persistence.TypedQuery;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -33,7 +34,7 @@ public class MasterDAOImpl implements MastersDAO {
 		se = fac.openSession();
 		Transaction txn = se.beginTransaction();
 		System.out.println("Inside Add master method of DAO Implimentation");
-		System.out.println("Record to be updated"+rec);
+		System.out.println("Record to be updated:"+rec);
 		switch (master) {
 		case("class"):{
 			LAClass laclass = new LAClass();
@@ -133,50 +134,50 @@ public class MasterDAOImpl implements MastersDAO {
 		se.close();	
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<LAClass> listClassMaster() {
 		System.out.println("Inside List Class Master method of DAO Implimentation");
 		String qry = "FROM LAClass";
 		se = fac.openSession();
-		Query tqry = se.createQuery(qry);
-		List<LAClass> rec = (List<LAClass>) tqry.list();
+		@SuppressWarnings("unchecked")
+		TypedQuery<LAClass> tqry = se.createQuery(qry);
+		List<LAClass> rec = tqry.getResultList();
 		se.close();
 		return rec;				
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<LAStudent> listStudentMaster() {
 		System.out.println("Inside List Student Master method of DAO Implimentation");
 		String qry = "FROM LAStudent";
 		se = fac.openSession();
-		Query tqry = se.createQuery(qry);
-		List<LAStudent> rec = (List<LAStudent>) tqry.list();
+		@SuppressWarnings("unchecked")
+		TypedQuery<LAStudent> tqry = se.createQuery(qry);
+		List<LAStudent> rec = tqry.getResultList();
 		se.close();
 		return rec;				
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<LASubject> listSubjectMaster() {
 		System.out.println("Inside List Subject Master method of DAO Implimentation");
 		String qry = "FROM LASubject";
 		se = fac.openSession();
-		Query tqry = se.createQuery(qry);
-		List<LASubject> rec = (List<LASubject>) tqry.list();
+		@SuppressWarnings("unchecked")
+		TypedQuery<LASubject> tqry = se.createQuery(qry);
+		List<LASubject> rec = tqry.getResultList();
 		se.close();
 		return rec;				
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<LATeacher> listTeacherMaster() {
 		System.out.println("Inside List Teacher Master method of DAO Implimentation");
 		String qry = "FROM LATeacher";
 		se = fac.openSession();
-		Query tqry = se.createQuery(qry);
-		List<LATeacher> rec = (List<LATeacher>) tqry.list();
+		@SuppressWarnings("unchecked")
+		TypedQuery<LATeacher> tqry = se.createQuery(qry);
+		List<LATeacher> rec = tqry.getResultList();
 		se.close();
 		return rec;				
 	}
