@@ -30,11 +30,13 @@ public class UpdateRecordInDB extends HttpServlet {
 		if(se != null) {
 			String master = (String) se.getAttribute("master");
 			String key = request.getParameter("code");
-			rec.setVar1(request.getParameter("ncode"));
+			rec.setVar1(request.getParameter("code"));
 			rec.setVar2(request.getParameter("name"));
 			rec.setVar3(request.getParameter("desc"));
 			dao.updateMaster(master, key, rec);
-			response.sendRedirect("Masters");
+			if	(master=="class"|master=="student"|master=="teacher"|master=="subject")
+				response.sendRedirect("Masters");
+			else response.sendRedirect("Mapping");
 		}else {
 			out.println("<html><body><center><span style='color:red'><h2>Invalid session!!!</h2><span><center>");
 			out.println("<br><br><br><h4>click <a href = \"Login.html\">here</a> to login again.</body></html>");

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Learner's Academy</title>
+	<style>table, th, td 
+	{
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+	</style>
+</head>
+<body>
+	<div align="center">
+		<h3>Select the pair of list for the mapping:</h3>
+			<table>
+			<tr>
+				<td>Subjects per Class:</td>
+				<td><form method="post" action="AddSu2CMap"><button type="submit">add</button></form></td>
+				<td><form method="post" action="RemoveSu2CMap"><button type="submit">Remove</button></form></td>
+				<td><form method="post" action="ModifySu2CMap"><button type="submit">Modify</button></form></td>
+				<td><form method="post" action="ListSu2CMap"><button type="submit">List</button></form></td>
+			</tr><tr>
+				<td>Teacher per Subject:</td>
+				<td><form method="post" action="AddT2SMap"><button type="submit">add</button></form></td>
+				<td><form method="post" action="RemoveT2SMap"><button type="submit">Remove</button></form></td>
+				<td><form method="post" action="ModifyT2SMap"><button type="submit">Modify</button></form></td>
+				<td><form method="post" action="ListT2SMap"><button type="submit">List</button></form></td>
+			</tr><tr>
+				<td>Students per Class:</td>
+				<td><form method="post" action="AddSt2CMap"><button type="submit">add</button></form></td>
+				<td><form method="post" action="RemoveSt2CMap"><button type="submit">Remove</button></form></td>
+				<td><form method="post" action="ModifySt2CMap"><button type="submit">Modify</button></form></td>
+				<td><form method="post" action="ListSt2CMap"><button type="submit">List</button></form></td>
+			</tr><tr>
+				<td>Students per Subject:*</td>
+				<td><form method="post" action="AddSt2SuMap"><button type="submit">add</button></form></td>
+				<td><form method="post" action="RemoveSt2SuMap"><button type="submit">Remove</button></form></td>
+				<td><form method="post" action="ModifySt2SuMap"><button type="submit">Modify</button></form></td>
+				<td><form method="post" action="ListSt2SuMap"><button type="submit">List</button></form></td>
+			</tr><tr>* upto 5th Standerd, All Students are mapped to all the Subjects in the class they are mapped to.</tr>
+		</table>
+	</div>
+	<h5 align="center"><form method="post" action="home"><button type="submit">Home</button></form></h5>
+</body>
+</html>

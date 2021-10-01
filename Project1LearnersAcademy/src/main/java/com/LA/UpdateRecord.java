@@ -22,39 +22,63 @@ public class UpdateRecord extends HttpServlet {
 		if (se != null) {
 			String master = (String) se.getAttribute("master");
 			out.println("<!DOCTYPE html><html><head><meta charset=\"ISO-8859-1\"><title>Update Record</title></head><body>");
-			out.println("<div align=\"center\"><h3>Please enter Values for the master record to be Updated/Modified:</h3>");
+			out.println("<div align=\"center\"><h3>Please enter Values for the record to be Updated/Modified:</h3>");
 			out.println("<form method=\"post\" action=\"UpdateRecordInDB\">");
 			switch (master) {
 			case ("class"):{
 				out.println("<table><tr><td>Class Code:</td><td><input type=\"text\" name=\"code\"></td></tr></table>");
-				out.println("<h3>Please enter New Values for the master:</h3>");
-				out.println("<table><tr><td>New Class Code:</td><td><input type=\"text\" name=\"ncode\"></td>");
-				out.println("</tr><tr><td>New Name:</td><td><input type=\"text\" name=\"name\"></td>");
+				out.println("<h3>Please enter New Values for the Class master:</h3>");
+				out.println("<table><tr><td>New Name:</td><td><input type=\"text\" name=\"name\"></td>");
 				out.println("</tr><tr><td>New Description:</td><td><input type=\"text\" name=\"desc\"></td>");
 				break;
 				}
 			case ("student"):{
 				out.println("<table><tr><td>Roll Number:</td><td><input type=\"text\" name=\"code\"></td></tr></table>");
-				out.println("<h3>Please enter New Values for the master:</h3>");
-				out.println("<table><tr><td>New Roll Number:</td><td><input type=\"text\" name=\"ncode\"></td>");
-				out.println("</tr><tr><td>New First Name:</td><td><input type=\"text\" name=\"name\"></td>");
+				out.println("<h3>Please enter New Values for the Student master:</h3>");
+				out.println("<table><tr><td>New First Name:</td><td><input type=\"text\" name=\"name\"></td>");
 				out.println("</tr><tr><td>New Last Name:</td><td><input type=\"text\" name=\"desc\"></td>");
 				break;
 				}
 			case ("teacher"):{
 				out.println("<table><tr><td>Teacher ID:</td><td><input type=\"text\" name=\"code\"></td></tr></table>");
-				out.println("<h3>Please enter New Values for the master:</h3>");
-				out.println("<table><tr><td>New Teacher ID:</td><td><input type=\"text\" name=\"ncode\"></td>");
-				out.println("</tr><tr><td>New First Name:</td><td><input type=\"text\" name=\"name\"></td>");
+				out.println("<h3>Please enter New Values for the Teacher master:</h3>");
+				out.println("<table><tr><td>New First Name:</td><td><input type=\"text\" name=\"name\"></td>");
 				out.println("</tr><tr><td>New Last Name:</td><td><input type=\"text\" name=\"desc\"></td>");
 				break;
 				}
 			case ("subject"):{
 				out.println("<table><tr><td>Subject Code:</td><td><input type=\"text\" name=\"code\"></td></tr></table>");
-				out.println("<h3>Please enter New Values for the master:</h3>");
-				out.println("<table><tr><td>New Subject Code:</td><td><input type=\"text\" name=\"code\"></td>");
-				out.println("</tr><tr><td>New Subject Name:</td><td><input type=\"text\" name=\"name\"></td>");
+				out.println("<h3>Please enter New Values for the Subject master:</h3>");
+				out.println("<table><tr><td>New Subject Name:</td><td><input type=\"text\" name=\"name\"></td>");
 				out.println("</tr><tr><td>New Subject Description:</td><td><input type=\"text\" name=\"desc\"></td>");
+				break;
+				}
+			case ("Su2CMap"):{
+				out.println("<table><tr><td>Subject to Class Mapping Code:</td><td><input type=\"text\" name=\"code\"></td></tr></table>");
+				out.println("<h3>Please enter New Values for Subject to Class Mapping:</h3>");
+				out.println("<table><tr><td>Subject Code:</td><td><input type=\"text\" name=\"name\"></td>");
+				out.println("</tr><tr><td>Class Code:</td><td><input type=\"text\" name=\"desc\"></td>");
+				break;
+				}
+			case ("T2SMap"):{
+				out.println("<table><tr><td>Teacher to Subject Mapping Code:</td><td><input type=\"text\" name=\"code\"></td></tr></table>");
+				out.println("<h3>Please enter New Values for Teacher to Subject Mapping:</h3>");
+				out.println("<table><tr><td>Teacher ID:</td><td><input type=\"text\" name=\"name\"></td>");
+				out.println("</tr><tr><td>Subject Code:</td><td><input type=\"text\" name=\"desc\"></td>");
+				break;
+				}
+			case ("St2CMap"):{
+				out.println("<table><tr><td>Student to Class Mapping Code:</td><td><input type=\"text\" name=\"code\"></td></tr></table>");
+				out.println("<h3>Please enter New Values for Student to Class Mapping:</h3>");
+				out.println("<table></tr><tr><td>Roll Number:</td><td><input type=\"text\" name=\"name\"></td>");
+				out.println("</tr><tr><td>Class Code:</td><td><input type=\"text\" name=\"desc\"></td>");
+				break;
+				}
+			case ("St2SuMap"):{
+				out.println("<table><tr><td>Student to Subject Mapping Code:</td><td><input type=\"text\" name=\"code\"></td></tr></table>");
+				out.println("<h3>Please enter New Values for Student to Subject Mapping:</h3>");
+				out.println("<table><tr><td>Roll Number:</td><td><input type=\"text\" name=\"name\"></td>");
+				out.println("</tr><tr><td>Subject Code:</td><td><input type=\"text\" name=\"desc\"></td>");
 				break;
 				}
 			}

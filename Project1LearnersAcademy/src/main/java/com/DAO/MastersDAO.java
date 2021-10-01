@@ -16,4 +16,5 @@ public interface MastersDAO {
 	public List<LAStudent> listStudentMaster();
 	public List<LASubject> listSubjectMaster();
 	public List<LATeacher> listTeacherMaster();
+	public Record[] ListMappings(String master);
 }

@@ -17,6 +17,10 @@
       <mapping class="com.dto.LAStudent"/>
       <mapping class="com.dto.LASubject"/>
       <mapping class="com.dto.LATeacher"/>
+      <mapping class="com.dto.Su2CMap"/>
+      <mapping class="com.dto.St2SuMap"/>
+      <mapping class="com.dto.St2CMap"/>
+      <mapping class="com.dto.T2SMap"/>
             
     </session-factory>
 </hibernate-configuration>

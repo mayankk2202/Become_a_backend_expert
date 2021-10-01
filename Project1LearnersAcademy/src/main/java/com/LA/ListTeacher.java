@@ -32,7 +32,7 @@ public class ListTeacher extends HttpServlet {
 			 out.println("<!DOCTYPE html><html><head><meta charset=\"ISO-8859-1\"><title>Update Record</title>"
 			 +"<style>table, th, td {border: 1px solid black;border-collapse: collapse;}</style></head><body>");
 			 out.println("<div align=\"center\"><h3>The Class Master Table is as follows:</h3>");
-			 out.println("<table><tr><b><th>CLASS_CODE</th><th>CLASS_NAME</th><th>CLASS_DESCRIPTION</th></b></tr>");
+			 out.println("<table><tr><b><th>Teacher Code</th><th>First Name</th><th>Last Name</th></b></tr>");
 			 
 			 for (int i=0;i<masterlist.size();i++) {
 				out.println("<tr><td>"+masterlist.get(i).gettID()+"</td><td>"+masterlist.get(i).getFname()+"</td><td>"+masterlist.get(i).getLname()+"</td></tr>");

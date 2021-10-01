@@ -17,6 +17,10 @@ import com.dto.LAStudent;
 import com.dto.LASubject;
 import com.dto.LATeacher;
 import com.dto.Record;
+import com.dto.St2CMap;
+import com.dto.St2SuMap;
+import com.dto.Su2CMap;
+import com.dto.T2SMap;
 
 public class MasterDAOImpl implements MastersDAO {
 	private SessionFactory fac;
@@ -64,7 +68,35 @@ public class MasterDAOImpl implements MastersDAO {
 			sub.setSuDes(rec.getVar3());
 			se.save(sub);
 			break;}
-	}
+		case ("Su2CMap"):{
+			Su2CMap su2c = new Su2CMap();
+			su2c.setCode(rec.getVar1());
+			su2c.setSuc(rec.getVar2());
+			su2c.setClc(rec.getVar3());
+			se.save(su2c);
+			break;}
+		case ("St2CMap"):{
+			St2CMap st2c = new St2CMap();
+			st2c.setCode(rec.getVar1());
+			st2c.setRono(rec.getVar2());
+			st2c.setClc(rec.getVar3());
+			se.save(st2c);
+			break;}
+		case ("St2SuMap"):{
+			St2SuMap st2su = new St2SuMap();
+			st2su.setCode(rec.getVar1());
+			st2su.setRono(rec.getVar2());
+			st2su.setSuc(rec.getVar3());
+			se.save(st2su);
+			break;}
+		case ("T2SMap"):{
+			T2SMap t2su = new T2SMap();
+			t2su.setCode(rec.getVar1());
+			t2su.setSuc(rec.getVar2());
+			t2su.setTec(rec.getVar3());
+			se.save(t2su);
+			break;}
+		}
 		txn.commit();
 		se.close();		
 	}
@@ -102,7 +134,36 @@ public class MasterDAOImpl implements MastersDAO {
 			sub.setSub(rec.getVar2());
 			sub.setSuDes(rec.getVar3());
 			se.update(sub);
-			break;}}
+			break;}
+		case("Su2CMap"):{
+			Su2CMap su2c = se.get(Su2CMap.class, key);
+			su2c.setCode(rec.getVar1());
+			su2c.setSuc(rec.getVar2());
+			su2c.setClc(rec.getVar3());
+			se.update(su2c);
+			break;}
+		case("St2CMap"):{
+			St2CMap st2c = se.get(St2CMap.class, key);
+			st2c.setCode(rec.getVar1());
+			st2c.setRono(rec.getVar2());
+			st2c.setClc(rec.getVar3());
+			se.update(st2c);
+			break;}
+		case("St2SuMap"):{
+			St2SuMap st2su = se.get(St2SuMap.class, key);
+			st2su.setCode(rec.getVar1());
+			st2su.setRono(rec.getVar2());
+			st2su.setSuc(rec.getVar3());
+			se.update(st2su);
+			break;}
+		case("T2SMap"):{
+			T2SMap t2su = se.get(T2SMap.class, key);
+			t2su.setCode(rec.getVar1());
+			t2su.setSuc(rec.getVar2());
+			t2su.setTec(rec.getVar3());
+			se.update(t2su);
+			break;}
+		}
 		txn.commit();
 		se.close();
 	}
@@ -128,6 +189,22 @@ public class MasterDAOImpl implements MastersDAO {
 		case ("subject"):{
 			LASubject sub = se.get(LASubject.class, key);
 			se.delete(sub);
+			break;}
+		case("Su2CMap"):{
+			Su2CMap su2c = se.get(Su2CMap.class, key);
+			se.delete(su2c);
+			break;}
+		case("St2CMap"):{
+			St2CMap st2c = se.get(St2CMap.class, key);
+			se.delete(st2c);
+			break;}
+		case("St2SuMap"):{
+			St2SuMap st2su = se.get(St2SuMap.class, key);
+			se.delete(st2su);
+			break;}
+		case("T2SMap"):{
+			T2SMap t2su = se.get(T2SMap.class, key);
+			se.delete(t2su);
 			break;}
 		}
 		txn.commit();
@@ -180,5 +257,91 @@ public class MasterDAOImpl implements MastersDAO {
 		List<LATeacher> rec = tqry.getResultList();
 		se.close();
 		return rec;				
+	}
+
+	@Override
+	public Record[] ListMappings(String master) {
+		System.out.println("Inside List Teacher Master method of DAO Implimentation");
+		Record[] rec = null;
+		switch (master) {
+		case("Su2CMap"):{
+			String qry = "FROM "+master;
+			se = fac.openSession();
+			@SuppressWarnings("unchecked")
+			TypedQuery<Su2CMap> tqrysu2c = se.createQuery(qry);
+			List<Su2CMap> su2crec = tqrysu2c.getResultList();
+			rec = new Record[su2crec.size()];
+			for (int i=0;i<su2crec.size();i++) {
+				LASubject sub = se.get(LASubject.class, su2crec.get(i).getSuc());
+				LAClass lacl = se.get(LAClass.class, su2crec.get(i).getClc());
+				/*
+				 * rec[i].Var1 = sub.getSucode(); rec[i].Var2 = sub.getSub(); rec[i].Var3 =
+				 * sub.getSuDes(); rec[i].var4 = lacl.getClasscode(); rec[i].var5 =
+				 * lacl.getClassname(); rec[i].var6 = lacl.getCldesc();
+				 */
+				 rec[i].setVar1(sub.getSucode());
+				 rec[i].setVar2(sub.getSub());
+				 rec[i].setVar3(sub.getSuDes());
+				 rec[i].setVar4(lacl.getClasscode());
+				 rec[i].setVar5(lacl.getClassname());
+				 rec[i].setVar6(lacl.getCldesc());
+			}
+			break;}
+		case("St2CMap"):{
+			String qry = "FROM "+master;
+			se = fac.openSession();
+			@SuppressWarnings("unchecked")
+			TypedQuery<St2CMap> tqryst2c = se.createQuery(qry);
+			List<St2CMap> st2crec = tqryst2c.getResultList();
+			rec = new Record[st2crec.size()];
+			for (int i=0;i<st2crec.size();i++) {
+				LAStudent stu = se.get(LAStudent.class, st2crec.get(i).getRono());
+				LAClass lacl = se.get(LAClass.class, st2crec.get(i).getClc());
+				rec[i].setVar1(stu.getRono());
+				rec[i].setVar2(stu.getFname());
+				rec[i].setVar3(stu.getLname());
+				rec[i].setVar4(lacl.getClasscode());
+				rec[i].setVar5(lacl.getClassname());
+				rec[i].setVar6(lacl.getCldesc());
+			}
+			break;}
+		case("St2SuMap"):{
+			String qry = "FROM "+master;
+			se = fac.openSession();
+			@SuppressWarnings("unchecked")
+			TypedQuery<St2SuMap> tqryst2c = se.createQuery(qry);
+			List<St2SuMap> st2surec = tqryst2c.getResultList();
+			rec = new Record[st2surec.size()];
+			for (int i=0;i<st2surec.size();i++) {
+				LAStudent stu = se.get(LAStudent.class, st2surec.get(i).getRono());
+				LASubject sub = se.get(LASubject.class, st2surec.get(i).getSuc());
+				rec[i].setVar1(stu.getRono());
+				rec[i].setVar2(stu.getFname());
+				rec[i].setVar3(stu.getLname());
+				rec[i].setVar4(sub.getSucode());
+				rec[i].setVar5(sub.getSub());
+				rec[i].setVar6(sub.getSuDes());
+			}
+			break;}
+		case("T2SMap"):{
+			String qry = "FROM "+master;
+			se = fac.openSession();
+			@SuppressWarnings("unchecked")
+			TypedQuery<T2SMap> tqryt2s = se.createQuery(qry);
+			List<T2SMap> t2srec = tqryt2s.getResultList();
+			rec = new Record[t2srec.size()];
+			for (int i=0;i<t2srec.size();i++) {
+				LATeacher teac = se.get(LATeacher.class, t2srec.get(i).getTec());
+				LASubject sub = se.get(LASubject.class, t2srec.get(i).getSuc());
+				rec[i].setVar1(teac.gettID());
+				rec[i].setVar2(teac.getFname());
+				rec[i].setVar3(teac.getLname());
+				rec[i].setVar4(sub.getSucode());
+				rec[i].setVar5(sub.getSub());
+				rec[i].setVar6(sub.getSuDes());
+			}
+			break;}
+		}
+		return rec;
 	}
 }
