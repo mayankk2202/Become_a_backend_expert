@@ -14,12 +14,12 @@ import com.DAO.MasterDAOImpl;
 import com.DAO.MastersDAO;
 import com.dto.Record;
 
-@WebServlet("/addrecord2db")
-public class addrecord2db extends HttpServlet {
+@WebServlet("/AddRecord2DB")
+public class AddRecord2DB extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Servlet implementation class addrecord2db");
+		System.out.println("Servlet implementation class AddRecord2DB");
 		PrintWriter out = response.getWriter();
 		HttpSession se = request.getSession(false);
 		MastersDAO dao = new MasterDAOImpl();

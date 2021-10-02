@@ -27,56 +27,56 @@ public class readrecord extends HttpServlet {
 			switch (master) {
 				case("class"):{
 					out.println("<div class=\"center\"><h3>Please enter Values for the Class master:</h3>");
-					out.println("<form method=\"post\" action=\"addrecord2db\"><table><tr><td>");
+					out.println("<form method=\"post\" action=\"AddRecord2DB\"><table><tr><td>");
 					out.println("Class Code:</td><td><input type=\"text\" name=\"code\"></td>");
 					out.println("</tr><tr><td>Class Name:</td><td><input type=\"text\" name=\"name\"></td>");
 					out.println("</tr><tr><td>Class Description:</td><td><input type=\"text\" name=\"desc\"></td>");
 					break;}
 				case("student"):{
 					out.println("<div class=\"center\"><h3>Please enter Values for the Student master:</h3>");
-					out.println("<form method=\"post\" action=\"addrecord2db\"><table><tr><td>");
+					out.println("<form method=\"post\" action=\"AddRecord2DB\"><table><tr><td>");
 					out.println("Roll Number:</td><td><input type=\"text\" name=\"code\"></td>");
 					out.println("</tr><tr><td>First Name:</td><td><input type=\"text\" name=\"name\"></td>");
 					out.println("</tr><tr><td>Last Name:</td><td><input type=\"text\" name=\"desc\"></td>");
 					break;}
 				case ("teacher"):{
 					out.println("<div class=\"center\"><h3>Please enter Values for the Teacher master:</h3>");
-					out.println("<form method=\"post\" action=\"addrecord2db\"><table><tr><td>");
+					out.println("<form method=\"post\" action=\"AddRecord2DB\"><table><tr><td>");
 					out.println("Teacher ID:</td><td><input type=\"text\" name=\"code\"></td>");
 					out.println("</tr><tr><td>First Name:</td><td><input type=\"text\" name=\"name\"></td>");
 					out.println("</tr><tr><td>Last Name:</td><td><input type=\"text\" name=\"desc\"></td>");
 					break;}
 				case ("subject"):{
 					out.println("<div class=\"center\"><h3>Please enter Values for the Subject master:</h3>");
-					out.println("<form method=\"post\" action=\"addrecord2db\"><table><tr><td>");
+					out.println("<form method=\"post\" action=\"AddRecord2DB\"><table><tr><td>");
 					out.println("Subject Code:</td><td><input type=\"text\" name=\"code\"></td>");
 					out.println("</tr><tr><td>Subject:</td><td><input type=\"text\" name=\"name\"></td>");
 					out.println("</tr><tr><td>Subject Description:</td><td><input type=\"text\" name=\"desc\"></td>");
 					break;}
 				case ("Su2CMap"):{
 					out.println("<div class=\"center\"><h3>Please enter Values for the Subject to Class mapping:</h3>");
-					out.println("<form method=\"post\" action=\"addrecord2db\"><table><tr><td>");
+					out.println("<form method=\"post\" action=\"AddRecord2DB\"><table><tr><td>");
 					out.println("Subject to Class Mapping Code:</td><td><input type=\"text\" name=\"code\"></td>");
 					out.println("</tr><tr><td>Subject Code:</td><td><input type=\"text\" name=\"name\"></td>");
 					out.println("</tr><tr><td>Class Code:</td><td><input type=\"text\" name=\"desc\"></td>");
 					break;}
 				case ("T2SMap"):{
 					out.println("<div class=\"center\"><h3>Please enter Values for the Teacher to Subject mapping:</h3>");
-					out.println("<form method=\"post\" action=\"addrecord2db\"><table><tr><td>");
+					out.println("<form method=\"post\" action=\"AddRecord2DB\"><table><tr><td>");
 					out.println("Teacher to Subject Mapping Code:</td><td><input type=\"text\" name=\"code\"></td>");
 					out.println("</tr><tr><td>Teacher Code:</td><td><input type=\"text\" name=\"name\"></td>");
 					out.println("</tr><tr><td>Subject Code:</td><td><input type=\"text\" name=\"desc\"></td>");
 					break;}
 				case ("St2CMap"):{
 					out.println("<div class=\"center\"><h3>Please enter Values for the Student to Class mapping:</h3>");
-					out.println("<form method=\"post\" action=\"addrecord2db\"><table><tr><td>");
+					out.println("<form method=\"post\" action=\"AddRecord2DB\"><table><tr><td>");
 					out.println("Student to Class Mapping Code:</td><td><input type=\"text\" name=\"code\"></td>");
 					out.println("</tr><tr><td>Roll Number:</td><td><input type=\"text\" name=\"name\"></td>");
 					out.println("</tr><tr><td>Class Code:</td><td><input type=\"text\" name=\"desc\"></td>");
 					break;}
 				case ("St2SuMap"):{
 					out.println("<div class=\"center\"><h3>Please enter Values for the Student to Subject mapping:</h3>");
-					out.println("<form method=\"post\" action=\"addrecord2db\"><table><tr><td>");
+					out.println("<form method=\"post\" action=\"AddRecord2DB\"><table><tr><td>");
 					out.println("Student to Subject Mapping Code:</td><td><input type=\"text\" name=\"code\"></td>");
 					out.println("</tr><tr><td>Roll Number:</td><td><input type=\"text\" name=\"name\"></td>");
 					out.println("</tr><tr><td>Subject Code:</td><td><input type=\"text\" name=\"desc\"></td>");

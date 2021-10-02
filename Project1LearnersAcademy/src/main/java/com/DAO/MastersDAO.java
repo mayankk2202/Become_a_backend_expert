@@ -17,4 +17,5 @@ public interface MastersDAO {
 	public List<LASubject> listSubjectMaster();
 	public List<LATeacher> listTeacherMaster();
 	public Record[] ListMappings(String master);
+	public Record[][] ClassWiseReport(String classDesc);
 }
