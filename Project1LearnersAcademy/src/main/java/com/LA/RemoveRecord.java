@@ -31,6 +31,7 @@ public class RemoveRecord extends HttpServlet {
 			case ("subject"):{ out.println("Subject Code:</td><td><input type=\"text\" name=\"code\"></td>"); break;}
 			case ("Su2CMap"):{ out.println("Subject to Class Mapping Code:</td><td><input type=\"text\" name=\"code\"></td>"); break;}
 			case ("T2SMap"):{ out.println("Teacher to Subject Mapping Code:</td><td><input type=\"text\" name=\"code\"></td>"); break;}
+			case ("T2CMap"):{ out.println("Teacher to Class Mapping Code:</td><td><input type=\"text\" name=\"code\"></td>"); break;}
 			case ("St2CMap"):{ out.println("Student to Class Mapping Code:</td><td><input type=\"text\" name=\"code\"></td>"); break;}
 			case ("St2SuMap"):{ out.println("Student to Subject Mapping Code:</td><td><input type=\"text\" name=\"code\"></td>"); break;}
 			}

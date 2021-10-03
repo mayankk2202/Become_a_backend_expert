@@ -67,6 +67,13 @@ public class UpdateRecord extends HttpServlet {
 				out.println("</tr><tr><td>Subject Code:</td><td><input type=\"text\" name=\"desc\"></td>");
 				break;
 				}
+			case ("T2CMap"):{
+				out.println("<table><tr><td>Teacher to Class Mapping Code:</td><td><input type=\"text\" name=\"code\"></td></tr></table>");
+				out.println("<h3>Please enter New Values for Teacher to Class Mapping:</h3>");
+				out.println("<table><tr><td>Teacher ID:</td><td><input type=\"text\" name=\"name\"></td>");
+				out.println("</tr><tr><td>Class Code:</td><td><input type=\"text\" name=\"desc\"></td>");
+				break;
+				}
 			case ("St2CMap"):{
 				out.println("<table><tr><td>Student to Class Mapping Code:</td><td><input type=\"text\" name=\"code\"></td></tr></table>");
 				out.println("<h3>Please enter New Values for Student to Class Mapping:</h3>");

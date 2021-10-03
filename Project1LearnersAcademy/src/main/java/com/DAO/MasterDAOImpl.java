@@ -2,7 +2,6 @@ package com.DAO;
 
 import java.util.List;
 
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 import org.hibernate.Session;
@@ -12,7 +11,6 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-
 import com.dto.LAClass;
 import com.dto.LAStudent;
 import com.dto.LASubject;
@@ -21,6 +19,7 @@ import com.dto.Record;
 import com.dto.St2CMap;
 import com.dto.St2SuMap;
 import com.dto.Su2CMap;
+import com.dto.T2CMap;
 import com.dto.T2SMap;
 
 public class MasterDAOImpl implements MastersDAO {
@@ -97,6 +96,13 @@ public class MasterDAOImpl implements MastersDAO {
 			t2su.setTec(rec.getVar3());
 			se.save(t2su);
 			break;}
+		case ("T2CMap"):{
+			T2CMap t2cu = new T2CMap();
+			t2cu.setCode(rec.getVar1());
+			t2cu.setClc(rec.getVar3());
+			t2cu.setTec(rec.getVar2());
+			se.save(t2cu);
+			break;}
 		}
 		txn.commit();
 		se.close();		
@@ -143,6 +149,20 @@ public class MasterDAOImpl implements MastersDAO {
 			su2c.setClc(rec.getVar3());
 			se.update(su2c);
 			break;}
+		case("T2SMap"):{
+			T2SMap t2su = se.get(T2SMap.class, key);
+			t2su.setCode(rec.getVar1());
+			t2su.setSuc(rec.getVar2());
+			t2su.setTec(rec.getVar3());
+			se.update(t2su);
+			break;}
+		case("T2CMap"):{
+			T2CMap t2cu = se.get(T2CMap.class, key);
+			t2cu.setCode(rec.getVar1());
+			t2cu.setClc(rec.getVar3());
+			t2cu.setTec(rec.getVar2());
+			se.update(t2cu);
+			break;}
 		case("St2CMap"):{
 			St2CMap st2c = se.get(St2CMap.class, key);
 			st2c.setCode(rec.getVar1());
@@ -156,13 +176,6 @@ public class MasterDAOImpl implements MastersDAO {
 			st2su.setRono(rec.getVar2());
 			st2su.setSuc(rec.getVar3());
 			se.update(st2su);
-			break;}
-		case("T2SMap"):{
-			T2SMap t2su = se.get(T2SMap.class, key);
-			t2su.setCode(rec.getVar1());
-			t2su.setSuc(rec.getVar2());
-			t2su.setTec(rec.getVar3());
-			se.update(t2su);
 			break;}
 		}
 		txn.commit();
@@ -195,6 +208,14 @@ public class MasterDAOImpl implements MastersDAO {
 			Su2CMap su2c = se.get(Su2CMap.class, key);
 			se.delete(su2c);
 			break;}
+		case("T2SMap"):{
+			T2SMap t2su = se.get(T2SMap.class, key);
+			se.delete(t2su);
+			break;}
+		case("T2CMap"):{
+			T2CMap t2cu = se.get(T2CMap.class, key);
+			se.delete(t2cu);
+			break;}
 		case("St2CMap"):{
 			St2CMap st2c = se.get(St2CMap.class, key);
 			se.delete(st2c);
@@ -202,10 +223,6 @@ public class MasterDAOImpl implements MastersDAO {
 		case("St2SuMap"):{
 			St2SuMap st2su = se.get(St2SuMap.class, key);
 			se.delete(st2su);
-			break;}
-		case("T2SMap"):{
-			T2SMap t2su = se.get(T2SMap.class, key);
-			se.delete(t2su);
 			break;}
 		}
 		txn.commit();
@@ -227,7 +244,7 @@ public class MasterDAOImpl implements MastersDAO {
 	@Override
 	public List<LAStudent> listStudentMaster() {
 		System.out.println("Inside List Student Master method of DAO Implimentation");
-		String qry = "FROM LAStudent";
+		String qry = "FROM LAStudent order by rono";
 		se = fac.openSession();
 		@SuppressWarnings("unchecked")
 		TypedQuery<LAStudent> tqry = se.createQuery(qry);
@@ -251,7 +268,7 @@ public class MasterDAOImpl implements MastersDAO {
 	@Override
 	public List<LATeacher> listTeacherMaster() {
 		System.out.println("Inside List Teacher Master method of DAO Implimentation");
-		String qry = "FROM LATeacher";
+		String qry = "FROM LATeacher order by tID";
 		se = fac.openSession();
 		@SuppressWarnings("unchecked")
 		TypedQuery<LATeacher> tqry = se.createQuery(qry);
@@ -275,12 +292,51 @@ public class MasterDAOImpl implements MastersDAO {
 			for (int i=0;i<su2crec.size();i++) {
 				LASubject sub = se.get(LASubject.class, su2crec.get(i).getSuc());
 				LAClass lacl = se.get(LAClass.class, su2crec.get(i).getClc());
+				rec[i] = new Record();
 				rec[i].setVar1(sub.getSucode());
 				rec[i].setVar2(sub.getSub());
 				rec[i].setVar3(sub.getSuDes());
 				rec[i].setVar4(lacl.getClasscode());
 				rec[i].setVar5(lacl.getClassname());
 				rec[i].setVar6(lacl.getCldesc());
+			}
+			break;}
+		case("T2SMap"):{
+			String qry = "FROM "+master;
+			se = fac.openSession();
+			@SuppressWarnings("unchecked")
+			TypedQuery<T2SMap> tqryt2s = se.createQuery(qry);
+			List<T2SMap> t2srec = tqryt2s.getResultList();
+			rec = new Record[t2srec.size()];
+			for (int i=0;i<t2srec.size();i++) {
+				LATeacher teac = se.get(LATeacher.class, t2srec.get(i).getTec());
+				LASubject sub = se.get(LASubject.class, t2srec.get(i).getSuc());
+				rec[i] = new Record();
+				rec[i].setVar1(teac.gettID());
+				rec[i].setVar2(teac.getFname());
+				rec[i].setVar3(teac.getLname());
+				rec[i].setVar4(sub.getSucode());
+				rec[i].setVar5(sub.getSub());
+				rec[i].setVar6(sub.getSuDes());
+			}
+			break;}
+		case("T2CMap"):{
+			String qry = "FROM "+master;
+			se = fac.openSession();
+			@SuppressWarnings("unchecked")
+			TypedQuery<T2CMap> tqryt2c = se.createQuery(qry);
+			List<T2CMap> t2crec = tqryt2c.getResultList();
+			rec = new Record[t2crec.size()];
+			for (int i=0;i<t2crec.size();i++) {
+				LATeacher teac = se.get(LATeacher.class, t2crec.get(i).getTec());
+				LAClass lac = se.get(LAClass.class, t2crec.get(i).getClc());
+				rec[i] = new Record();
+				rec[i].setVar1(teac.gettID());
+				rec[i].setVar2(teac.getFname());
+				rec[i].setVar3(teac.getLname());
+				rec[i].setVar4(lac.getClasscode());
+				rec[i].setVar5(lac.getClassname());
+				rec[i].setVar6(lac.getCldesc());
 			}
 			break;}
 		case("St2CMap"):{
@@ -293,6 +349,7 @@ public class MasterDAOImpl implements MastersDAO {
 			for (int i=0;i<st2crec.size();i++) {
 				LAStudent stu = se.get(LAStudent.class, st2crec.get(i).getRono());
 				LAClass lacl = se.get(LAClass.class, st2crec.get(i).getClc());
+				rec[i] = new Record();
 				rec[i].setVar1(stu.getRono());
 				rec[i].setVar2(stu.getFname());
 				rec[i].setVar3(stu.getLname());
@@ -311,27 +368,10 @@ public class MasterDAOImpl implements MastersDAO {
 			for (int i=0;i<st2surec.size();i++) {
 				LAStudent stu = se.get(LAStudent.class, st2surec.get(i).getRono());
 				LASubject sub = se.get(LASubject.class, st2surec.get(i).getSuc());
+				rec[i] = new Record();
 				rec[i].setVar1(stu.getRono());
 				rec[i].setVar2(stu.getFname());
 				rec[i].setVar3(stu.getLname());
-				rec[i].setVar4(sub.getSucode());
-				rec[i].setVar5(sub.getSub());
-				rec[i].setVar6(sub.getSuDes());
-			}
-			break;}
-		case("T2SMap"):{
-			String qry = "FROM "+master;
-			se = fac.openSession();
-			@SuppressWarnings("unchecked")
-			TypedQuery<T2SMap> tqryt2s = se.createQuery(qry);
-			List<T2SMap> t2srec = tqryt2s.getResultList();
-			rec = new Record[t2srec.size()];
-			for (int i=0;i<t2srec.size();i++) {
-				LATeacher teac = se.get(LATeacher.class, t2srec.get(i).getTec());
-				LASubject sub = se.get(LASubject.class, t2srec.get(i).getSuc());
-				rec[i].setVar1(teac.gettID());
-				rec[i].setVar2(teac.getFname());
-				rec[i].setVar3(teac.getLname());
 				rec[i].setVar4(sub.getSucode());
 				rec[i].setVar5(sub.getSub());
 				rec[i].setVar6(sub.getSuDes());
@@ -341,44 +381,57 @@ public class MasterDAOImpl implements MastersDAO {
 		return rec;
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public Record[][] ClassWiseReport(String classDesc) {
-		System.out.println("Inside List/Show Mapping Master method of DAO Implimentation");
+		System.out.println("Inside Show Class Wise Report method of DAO Implimentation");
+		se = fac.openSession();
 		//identify class code from class Description
-		String classkey = "FROM LAClass WHERE LAClass.cldesc = "+classDesc;
-		Query qryclasskey = se.createQuery(classkey);
-		List<LAClass> lac = qryclasskey.getResultList();
+		String classkey = "FROM LAClass WHERE cldesc='"+classDesc+"'";
+		@SuppressWarnings("unchecked")
+		TypedQuery<LAClass> qryclasskey = se.createQuery(classkey);
+		LAClass lac = qryclasskey.getSingleResult();
 		//pull up all the subjects mapped to the class
-		String subqry = "FROM Su2CMap WHERE Su2CMap.clc = "+lac.get(0).getClasscode();
+		String subqry = "FROM Su2CMap WHERE clc='"+lac.getClasscode()+"'";
+		@SuppressWarnings("unchecked")
 		TypedQuery<Su2CMap> tableheader = se.createQuery(subqry);
 		List<Su2CMap> subject = tableheader.getResultList();
 		//pull up all the Students mapped to the class
-		String tvalueqry = "FROM St2CMap WHERE St2CMap.clc = "+lac.get(0).getClasscode();
+		String tvalueqry = "FROM St2CMap WHERE clc='"+lac.getClasscode()+"'";
+		@SuppressWarnings("unchecked")
 		TypedQuery<St2CMap> tableValue = se.createQuery(tvalueqry);
 		List<St2CMap> student = tableValue.getResultList();
 		
 		Record[][] rec = new Record[subject.size()][student.size()+2];
 		for(int i=0;i<rec.length;i++) {
 			for(int j=0;j<rec[i].length;j++) {
+				LASubject sub = se.get(LASubject.class, subject.get(i).getSuc());
+				String t2scqry = "FROM T2SMap WHERE suc='"+sub.getSucode()+"'";
+				@SuppressWarnings("unchecked")
+				TypedQuery<T2SMap> qryt2s = se.createQuery(t2scqry);
+				List<T2SMap> t2s = qryt2s.getResultList();
+				
 				if(j==0) {
 					//set header row as Subject Name
-					LASubject sub = se.get(LASubject.class, subject.get(i).getSuc());
+					rec[i][j] = new Record();
 					rec[i][j].setVar1(sub.getSub());
 				}else if (j==1) {
 					//set 2nd row as Teacher names, hence pull up the Teacher mapped to the subject
-					LASubject sub = se.get(LASubject.class, subject.get(i).getSuc());
-					String teacqry = "FROM T2SMap WHERE T2SMap.suc = "+sub.getSucode();
-					Query qryteac = se.createQuery(teacqry);
-					List<T2SMap> teac = qryteac.getResultList();
-					LATeacher teacher = se.get(LATeacher.class, teac.get(0).getTec());
-					rec[i][j].setVar1(teacher.getFname()+" "+teacher.getLname());
+					for (int k =0; k < t2s.size(); k++) {
+						T2CMap t2cmap = se.get(T2CMap.class, t2s.get(k).getTec());
+						if(t2cmap.getClc().equals(lac.getClasscode())) {
+							LATeacher teacher = se.get(LATeacher.class, t2cmap.getTec());
+							rec[i][j] = new Record();
+							rec[i][j].setVar1(teacher.getFname()+" "+teacher.getLname());
+						}
+					}					
 				}else {
 					LAStudent stu = se.get(LAStudent.class, student.get(i).getRono());
+					rec[i][j] = new Record();
 					rec[i][j].setVar1(stu.getFname()+" "+stu.getLname());
 				}
 			}
 		}
+		se.close();
 		return rec;
 	}
 }

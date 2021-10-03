@@ -21,6 +21,7 @@
       <mapping class="com.dto.St2SuMap"/>
       <mapping class="com.dto.St2CMap"/>
       <mapping class="com.dto.T2SMap"/>
+      <mapping class="com.dto.T2CMap"/>
             
     </session-factory>
 </hibernate-configuration>

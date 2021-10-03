@@ -67,6 +67,13 @@ public class readrecord extends HttpServlet {
 					out.println("</tr><tr><td>Teacher Code:</td><td><input type=\"text\" name=\"name\"></td>");
 					out.println("</tr><tr><td>Subject Code:</td><td><input type=\"text\" name=\"desc\"></td>");
 					break;}
+				case ("T2CMap"):{
+					out.println("<div class=\"center\"><h3>Please enter Values for the Teacher to Class mapping:</h3>");
+					out.println("<form method=\"post\" action=\"AddRecord2DB\"><table><tr><td>");
+					out.println("Teacher to Class Mapping Code:</td><td><input type=\"text\" name=\"code\"></td>");
+					out.println("</tr><tr><td>Teacher Code:</td><td><input type=\"text\" name=\"name\"></td>");
+					out.println("</tr><tr><td>Class Code:</td><td><input type=\"text\" name=\"desc\"></td>");
+					break;}
 				case ("St2CMap"):{
 					out.println("<div class=\"center\"><h3>Please enter Values for the Student to Class mapping:</h3>");
 					out.println("<form method=\"post\" action=\"AddRecord2DB\"><table><tr><td>");
