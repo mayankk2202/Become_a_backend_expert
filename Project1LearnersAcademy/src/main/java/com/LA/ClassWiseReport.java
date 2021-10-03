@@ -31,7 +31,7 @@ public class ClassWiseReport extends HttpServlet {
 			Record[][] qryRes = dao.ClassWiseReport(request.getParameter("Cldesc"));
 			 
 			out.println("<!DOCTYPE html><html><style>table, th, td {border: 1px solid black;border-collapse: collapse;}</style></head><body>");
-			out.println("<div align=\"center\"><h3>The Class Report is as follows:</h3><table>");
+			out.println("<div align=\"center\"><h3>The "+request.getParameter("Cldesc")+" Report is as follows:</h3><table>");
 					 
 			for (int i=0;i<qryRes.length;i++) {
 				out.println("<tr>");
