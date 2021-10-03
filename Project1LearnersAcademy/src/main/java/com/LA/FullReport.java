@@ -49,6 +49,7 @@ public class FullReport extends HttpServlet {
 				}
 				out.println("</table>");
 			}
+			out.println("<h5 align=\"center\"><form method=\"post\" action=\"Report\"><button type=\"submit\">Back to Report Selection</button></form></h5>");
 			out.println("</div></body></html>");
 		}else {
 			out.println("<html><body><center><span style='color:red'><h2>Invalid session!!!</h2></Span><center>");
